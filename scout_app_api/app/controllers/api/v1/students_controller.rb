@@ -1,4 +1,15 @@
 class Api::V1::StudentsController < ApplicationController
+
+  def login
+    student = Student.find_by(user_id: params[:user_id])
+    if student && student.password == params[:password]
+      render json: { success: true, student_id: student.id }
+    else
+      render json: { success: false }, status: :unauthorized
+    end
+  end
+  
+
   def index
     @students = Student.all
     render json:@students
