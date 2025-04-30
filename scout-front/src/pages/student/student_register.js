@@ -1,0 +1,70 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
+
+export default function Register() {
+  const [form, setForm] = useState({
+    name: "",
+    user_id: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const [error, setError] = useState("");
+  const router = useRouter();
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (form.password !== form.confirmPassword) {
+      setError("パスワードが一致しません");
+      return;
+    }
+
+    try {
+      const res = await fetch("http://localhost:3001/api/v1/students", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          user_id: form.user_id,
+          password: form.password,
+        }),
+      });
+
+      if (res.ok) {
+        router.push("student_register_success"); // 登録完了画面
+      } else {
+        const data = await res.json();
+        if (data.user_id && Array.isArray(data.user_id)) {
+            setError("このIDは既に使われています。別のIDを入力してください。");
+          } else {
+            setError("登録に失敗しました");
+          }
+        
+      }
+    } catch (err) {
+      setError("サーバーエラーが発生しました");
+    }
+  };
+
+  return (
+        <div>
+          <h1>学生登録ページ</h1>
+          <p>学生用のアカウントを作成します。</p>
+      
+          <form onSubmit={handleSubmit}>
+  <input name="name" placeholder="名前" onChange={handleChange} /><br />
+  <input name="user_id" placeholder="ID" onChange={handleChange} /><br />
+  <input type="password" name="password" placeholder="パスワード" onChange={handleChange} /><br />
+  <input type="password" name="confirmPassword" placeholder="確認パスワード" onChange={handleChange} /><br />
+  {error && <p style={{ color: "red" }}>{error}</p>}
+  <button type="submit">登録</button><br />
+</form>
+
+        </div>
+      );
+      
+}
