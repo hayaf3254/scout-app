@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post 'students/login', to: 'students#login'
+      post 'companies/login', to: 'companies#login'
       resources :messages, only: [:index, :show, :create, :update, :destroy]
       resources :companies, only: [:index, :show, :create, :update, :destroy]
       resources :students, only: [:index, :show, :create, :update, :destroy]

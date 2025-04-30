@@ -6,13 +6,13 @@ export default function Home() {
       <h1>インターンマッチングサービス</h1>
       <div>
 
-        <Link href="/company/company-login">
+        <Link href="/company/company_login">
           <button>企業用ログイン</button>
         </Link>
       </div>
 
       <div>
-        <Link href="/student/student-login">
+        <Link href="/student/student_login">
           <button>学生用ログイン</button>
         </Link>
       </div>

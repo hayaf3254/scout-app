@@ -1,4 +1,15 @@
 class Api::V1::CompaniesController < ApplicationController
+
+  def login
+    company = Company.find_by(user_id: params[:user_id])
+    if company && company.password == params[:password]
+      render json: { success: true, company_id: company.id }
+    else
+      render json: { success: false }, status: :unauthorized
+    end
+  end
+
+
   def index
     @companies = Company.all
     render json: @companies

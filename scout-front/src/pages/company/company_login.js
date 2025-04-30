@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-export default function StudentLogin() {
+export default function CompanyLogin() {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
+  const router = useRouter();
 
   const handleLogin = async () => {
-    console.log('学生ログインID:', id);
-    console.log('学生ログインPassword:', password);
-
+    console.log('企業ログインID:', id);
+    console.log('企業ログインPassword:', password);
+    // ここにログイン処理を書く（後で）
     try {
-      const res = await fetch('http://localhost:3001/api/v1/students/login', {
+      const res = await fetch('http://localhost:3001/api/v1/companies/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -25,7 +27,8 @@ export default function StudentLogin() {
       const data = await res.json();
 
       if (res.ok && data.success) {
-        console.log('✅ ログイン成功！学生ID:', data.student_id);
+        console.log('✅ 企業ログイン成功！企業ID:', data.company_id);
+        router.push('/company/listed_students'); // ログイン成功後に遷移するページ
       } else {
         console.log('❌ ログイン失敗！IDまたはパスワードが違います');
       }
@@ -36,7 +39,7 @@ export default function StudentLogin() {
 
   return (
     <div>
-      <h1>学生ログインページ</h1>
+      <h1>企業ログインページ</h1>
       <div>
         <label>ID:</label>
         <input
@@ -56,11 +59,10 @@ export default function StudentLogin() {
       <div>
         <button onClick={handleLogin}>ログイン</button>
       </div>
-
       <div>
-        <Link href="/student/student-register">
-          <button>新規無料登録</button>
-        </Link>
+        
+          <button onClick={() => router.push('/company/company_register')}>新規無料登録</button>
+        
       </div>
     </div>
   );

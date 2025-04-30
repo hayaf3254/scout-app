@@ -35,7 +35,7 @@ export default function Register() {
       });
 
       if (res.ok) {
-        router.push("student-register-success"); // 登録完了画面
+        router.push("student_register_success"); // 登録完了画面
       } else {
         const data = await res.json();
         if (data.user_id && Array.isArray(data.user_id)) {

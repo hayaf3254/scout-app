@@ -3,7 +3,7 @@ export default function StudentRegisterSuccess() {
       <div>
         <h1>登録完了</h1>
         <p>学生アカウントが正常に登録されました！</p>
-        <a href="/student/student-login">ログインページへ</a>
+        <a href="/student/student_login">ログインページへ</a>
       </div>
     );
   }
