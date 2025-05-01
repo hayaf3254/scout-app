@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import styles from "@/styles/app.module.css"; 
 
 export default function MessagePage() {
   const router = useRouter();
@@ -57,15 +58,16 @@ export default function MessagePage() {
   };
 
   return (
-    <div>
-      <h1>企業：{company?.name}</h1>
+    <div className={styles.container}>
 
-      <h2>学生：{student?.name}</h2>
 
-      <h3>企業のメッセージ一覧</h3>
-      <ul>
+      <h1 className={styles.title}>企業のメッセージ一覧</h1>
+      <p>企業：{company?.name}</p>
+
+      <p >学生：{student?.name}</p>
+      <ul >
         {messages.map((msg) => (
-          <li key={msg.id}>{msg.content}</li>
+          <li key={msg.id} className={styles.message}>{msg.content}</li>
         ))}
       </ul>
 

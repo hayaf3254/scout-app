@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import styles from '@/styles/app.module.css';
 
 export default function CompanyRegister() {
   const [form, setForm] = useState({
@@ -54,15 +55,15 @@ export default function CompanyRegister() {
   };
 
   return (
-        <div>
-          <h1>企業用登録ページ</h1>
+        <div className={styles.container}>
+          <h1 className={styles.title}>企業用登録ページ</h1>
           <p>企業用のアカウント、掲載内容を作成します。</p>
       
-          <form onSubmit={handleSubmit}>
-  <input name="name" placeholder="名前" onChange={handleChange} /><br />
-  <input name="user_id" placeholder="ID" onChange={handleChange} /><br />
-  <input type="password" name="password" placeholder="パスワード" onChange={handleChange} /><br />
-  <input type="password" name="confirmPassword" placeholder="確認パスワード" onChange={handleChange} /><br />
+          <form onSubmit={handleSubmit} className={styles.formWrapper}>
+  <input name="name" placeholder="名前" onChange={handleChange} className={styles.input} />
+  <input name="user_id" placeholder="ID" onChange={handleChange} className={styles.input} />
+  <input type="password" name="password" placeholder="パスワード" onChange={handleChange} className={styles.input} />
+  <input type="password" name="confirmPassword" placeholder="確認パスワード" onChange={handleChange} className={styles.input} />
   {error && <p style={{ color: "red" }}>{error}</p>}
 
   <textarea
@@ -71,8 +72,9 @@ export default function CompanyRegister() {
   onChange={handleChange}
   rows={5}
   cols={40}
-  /><br />掲載する<br />
-  <button type="submit">登録</button><br />
+  className={styles.textarea}
+  />
+  <button type="submit" className={styles.button}>登録</button>
 </form>
 
         </div>

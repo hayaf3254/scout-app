@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import styles from '@/styles/app.module.css'; 
 
 export default function CompaniesList() {
   const [companies, setCompanies] = useState([]);
@@ -12,17 +13,17 @@ export default function CompaniesList() {
   }, []);
 
   return (
-    <div>
-      <div>
-      <Link href={`/student/company_message_list`}>
+    <div className={styles.container}>
+      <div className={styles.buttonWrapper}>
+      <Link href={`/student/company_message_list`} className={styles.link}>
               企業からのメッセージ一覧
           </Link>
       </div>
-      <h1>企業一覧</h1>
-      <ul>
+      <h1 className={styles.title}>企業一覧</h1>
+      <ul className={styles.list} >
         {companies.map((company) => (
-          <li key={company.id}>
-            <Link href={`/student/company_publish/${company.id}`}>
+          <li key={company.id} className={styles.listItem}>
+            <Link href={`/student/company_publish/${company.id}`} >
               {company.name}
             </Link>
           </li>

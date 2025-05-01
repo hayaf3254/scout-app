@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import styles from "@/styles/app.module.css"; 
 
 export default function CompanyDetail() {
   const router = useRouter();
@@ -19,10 +20,10 @@ export default function CompanyDetail() {
   if (!company) return <div>読み込み中...</div>;
 
   return (
-    <div>
-      <h1>{company.name}</h1>
-      <p>掲載内容</p>
-      <p>{company.publish}</p>
+    <div className={styles.container}>
+      <h1 className={styles.title}>{company.name}</h1>
+      <p className={styles.message}>掲載内容</p>
+      <p className={styles.message}>{company.publish}</p>
       <br />
       <Link href="/student/listed_companies">← 企業一覧に戻る</Link>
     </div>
