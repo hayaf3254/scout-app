@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import styles from "@/styles/app.module.css"; 
 
 export default function MessagePage() {
   const router = useRouter();
@@ -56,19 +57,19 @@ export default function MessagePage() {
   };
 
   return (
-    <div>
-      <h1>企業：{company?.name}</h1>
+    <div className={styles.container}>
+      <p >企業：{company?.name}</p>
 
-      <h2>学生：{student?.name}</h2>
+      <p>学生：{student?.name}</p>
 
-      <h3>メッセージ一覧</h3>
-      <ul>
+      <h1 className={styles.title}>メッセージ一覧</h1>
+      <ul className={styles.list}>
         {messages.map((msg) => (
-          <li key={msg.id}>{msg.content}</li>
+          <li key={msg.id}  className={styles.listItem}>{msg.content}</li>
         ))}
       </ul>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <textarea
           rows="4"
           cols="50"
@@ -77,7 +78,7 @@ export default function MessagePage() {
           onChange={(e) => setContent(e.target.value)}
         />
         <br />
-        <button type="submit">送信</button>
+        <button type="submit" className={styles.button}>送信</button>
       </form>
     </div>
   );

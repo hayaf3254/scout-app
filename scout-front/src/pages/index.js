@@ -1,19 +1,20 @@
 import Link from 'next/link';
+import styles from '../styles/app.module.css';
 
 export default function Home() {
   return (
-    <div>
-      <h1>インターンマッチングサービス</h1>
-      <div>
+    <div className={styles.container}>
+      <h1 className={styles.title}>インターンマッチングサービス</h1>
+      <div className={styles.buttonWrapper}>
 
         <Link href="/company/company_login">
-          <button>企業用ログイン</button>
+          <button className={styles.button}>企業用ログイン</button>
         </Link>
       </div>
 
-      <div>
+      <div className={styles.buttonWrapper}>
         <Link href="/student/student_login">
-          <button>学生用ログイン</button>
+          <button className={styles.button}>学生用ログイン</button>
         </Link>
       </div>
       

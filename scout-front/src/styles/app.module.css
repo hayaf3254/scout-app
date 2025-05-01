@@ -1,0 +1,118 @@
+/* 全体を中央寄せにするコンテナ */
+.container {
+    display: flex;
+    flex-direction: column; /* 上から下に並べる */
+    align-items: center;     /* 横方向中央寄せ */
+    justify-content: flex-start; /* 上から並べる */
+    height: 100vh;           /* 画面全体を使う */
+    background-color: #f9f9f9; /* 薄い背景色 */
+    padding-top: 2rem;           /* 上に少し余白もたせる */
+  }
+  
+  /* タイトルのスタイル */
+  .title {
+    font-size: 2rem;         /* 文字を大きく */
+    margin-bottom: 2rem;     /* 下に余白 */
+    color: #333;             /* 濃いグレーで読みやすく */
+  }
+  
+  /* ボタン全体を包むdivに余白 */
+  .buttonWrapper {
+    margin: 0.5rem 0;
+  }
+  
+  /* ボタンのスタイル */
+  .button {
+    padding: 0.5rem 1rem;    /* 内側の余白 */
+    font-size: 1rem;         /* 文字サイズ */
+    background-color: #0070f3; /* 青っぽい背景 */
+    color: white;            /* 白文字 */
+    border: none;            /* 枠線なし */
+    border-radius: 5px;      /* 丸み */
+    cursor: pointer;         /* マウスをポインターに */
+    border: 1px solid #000;    /*  ここで黒い枠線！ */
+    margin-top: 0.5rem; /* ボタンの上にスペース作る！ */
+    
+  }
+  
+  /* ホバーしたときのボタンの変化 */
+  .button:hover {
+    background-color: #005bb5; /* 少し濃い青に変化 */
+  }
+  
+  /* ホバー時に色を濃くして視覚的な反応を出す */
+.button:hover {
+  background-color: #005bb5;    /* 濃いめの青に変化 */
+}
+
+
+/* 入力フォーム全体を縦に並べるラッパー */
+.formWrapper {
+  display: flex;              /* 中身を並べるためのflexboxを有効に */
+  flex-direction: column;     /* 上から下に並べる（縦並び） */
+  width: 300px;               /* 入力欄などを含めた横幅を300pxに固定 */
+  gap: 1rem;                  /* 各要素（ラベル、入力欄、ボタン）の間に1remの余白をあける */
+  margin-top: 2rem; /* ← 追加：上にスペース作る！ */
+}
+
+/* 入力欄（テキストボックス）のデザイン */
+.input {
+  padding: 0.5rem;            /* テキストの内側に余白（上下左右） */
+  font-size: 1rem;            /* テキストの大きさを標準的に */
+  border: 1px solid #ccc;     /* 薄いグレーの枠線で囲む */
+  border-radius: 4px;         /* 枠の角を少し丸くする */
+  width: 100%; /* ラベルと横幅を揃える */
+  box-sizing: border-box; /* padding含めて幅を正しく計算 */
+}
+
+.label {
+  font-size: 1rem;
+  margin-bottom: 0.25rem; /* 入力欄との間に少し余白 */
+}
+
+
+.s_input {
+  padding: 0.75rem 1rem;   /* ← 上下の余白を少し広げる */
+  font-size: 1rem;
+  height: 48px;            /* ← 高さを固定して自然に大きく */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border 0.2s ease;
+  box-sizing: border-box;  /* ← padding込みでちょうどの幅になるように */
+  
+}
+
+.message {
+  font-size: 1.1rem;                /* 少し大きめの文字 */
+  color: #333;                      /* 読みやすい濃いグレー */
+  margin-bottom: 2rem;             /* メッセージ下にスペース */
+}
+
+/* 「ログインページへ」のリンクをボタン風に見せるスタイル */
+.link {
+  font-size: 1.5rem;                  /* 標準的な文字サイズ */                     /* 白文字 */
+  padding: 0.5rem 1rem;             /* 内側の余白（縦横） */
+  text-decoration: none;           /* 下線を消してボタンっぽく */
+  border-radius: 5px;              /* 角を少し丸く */
+  transition: background-color 0.2s ease; /* ホバー時の色変化を滑らかに */
+}
+
+/* ボタンにホバーしたときに背景色を濃くするスタイル */
+.link:hover {
+  background-color: #005bb5;       /* 濃いめの青に変化させる */
+}
+
+/* 表示するリスト全体のスタイル */
+.list {
+  list-style: none;        /* デフォルトの黒丸を消す */
+  padding: 0;              /* 余白をリセット */
+  width: 100%;             /* 親に対して全幅 */
+  max-width: 400px;        /* 最大幅を制限して読みやすく */
+  margin-top: 1rem;        /* タイトルとの間にスペース */
+}
+
+/* 表示するリスト項目のスタイル */
+.listItem {
+  margin-bottom: 1rem;     /* 各項目の間にスペース */
+  text-align: center;      /* テキストを中央に寄せる */
+}

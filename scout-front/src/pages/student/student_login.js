@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import styles from '@/styles/app.module.css';
 
 export default function StudentLogin() {
   const [id, setId] = useState('');
@@ -32,7 +33,7 @@ export default function StudentLogin() {
         localStorage.setItem("studentId", data.student_id);
         router.push('/student/listed_companies'); // ログイン成功後に遷移するページ
       } else {
-        console.log('❌ ログイン失敗！IDまたはパスワードが違います');
+        alert('❌ ログイン失敗！IDまたはパスワードが違います');
       }
     } catch (error) {
       console.log('⚠️ 通信エラー:', error);
@@ -40,14 +41,15 @@ export default function StudentLogin() {
   };
 
   return (
-    <div>
-      <h1>学生ログインページ</h1>
-      <div>
+    <div className={styles.container}>
+      <h1 className={styles.title}>学生ログインページ</h1>
+      <div className={styles.formWrapper}>
         <label>ID:</label>
         <input
           type="text"
           value={id}
           onChange={(e) => setId(e.target.value)}
+          className={styles.input}
         />
       </div>
       <div>
@@ -56,15 +58,16 @@ export default function StudentLogin() {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className={styles.input}
         />
       </div>
       <div>
-        <button onClick={handleLogin}>ログイン</button>
+        <button onClick={handleLogin} className={styles.button}>ログイン</button>
       </div>
 
       <div>
         
-          <button onClick={() => router.push('/student/student_register')}>新規無料登録</button>
+          <button onClick={() => router.push('/student/student_register')} className={styles.button}>新規無料登録</button>
         
       </div>
     </div>

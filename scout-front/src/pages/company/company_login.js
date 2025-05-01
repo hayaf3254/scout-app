@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import styles from '@/styles/app.module.css';
 
 export default function CompanyLogin() {
   const [id, setId] = useState('');
@@ -39,14 +40,15 @@ export default function CompanyLogin() {
   };
 
   return (
-    <div>
-      <h1>企業ログインページ</h1>
-      <div>
+    <div className={styles.container}>
+      <h1 className={styles.title}>企業ログインページ</h1>
+      <div className={styles.formWrapper}>
         <label>ID:</label>
         <input
           type="text"
           value={id}
           onChange={(e) => setId(e.target.value)}
+          className={styles.input}
         />
       </div>
       <div>
@@ -55,14 +57,15 @@ export default function CompanyLogin() {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className={styles.input}
         />
       </div>
       <div>
-        <button onClick={handleLogin}>ログイン</button>
+        <button onClick={handleLogin}  className={styles.button}>ログイン</button>
       </div>
       <div>
         
-          <button onClick={() => router.push('/company/company_register')}>新規無料登録</button>
+          <button onClick={() => router.push('/company/company_register')} className={styles.button}>新規無料登録</button>
         
       </div>
     </div>
