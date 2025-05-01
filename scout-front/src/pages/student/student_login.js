@@ -29,7 +29,7 @@ export default function StudentLogin() {
 
       if (res.ok && data.success) {
         console.log('✅ ログイン成功！学生ID:', data.student_id);
-        alert('ログイン成功！ページ遷移します');
+        localStorage.setItem("studentId", data.student_id);
         router.push('/student/listed_companies'); // ログイン成功後に遷移するページ
       } else {
         console.log('❌ ログイン失敗！IDまたはパスワードが違います');
