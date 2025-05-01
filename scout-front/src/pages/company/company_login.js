@@ -10,7 +10,7 @@ export default function CompanyLogin() {
   const handleLogin = async () => {
     console.log('企業ログインID:', id);
     console.log('企業ログインPassword:', password);
-    // ここにログイン処理を書く（後で）
+ 
     try {
       const res = await fetch('http://localhost:3001/api/v1/companies/login', {
         method: 'POST',
@@ -28,6 +28,7 @@ export default function CompanyLogin() {
 
       if (res.ok && data.success) {
         console.log('✅ 企業ログイン成功！企業ID:', data.company_id);
+        localStorage.setItem("companyId", data.company_id)
         router.push('/company/listed_students'); // ログイン成功後に遷移するページ
       } else {
         console.log('❌ ログイン失敗！IDまたはパスワードが違います');
