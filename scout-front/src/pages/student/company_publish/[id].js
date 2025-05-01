@@ -10,7 +10,7 @@ export default function CompanyDetail() {
   useEffect(() => {
     if (!id) return;
 
-    fetch(`http://localhost:3001/api/v1/companies/${id}`) // ← APIがcompaniesならここはcompanies
+    fetch(`http://localhost:3001/api/v1/companies/${id}`) 
       .then((res) => res.json())
       .then((data) => setCompany(data))
       .catch((err) => console.error("API error:", err));
