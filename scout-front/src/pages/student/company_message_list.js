@@ -3,24 +3,25 @@ import Link from "next/link";
 
 export default function MessageSenders() {
   const [companyList, setCompanyList] = useState([]);
-  const studentId = parseInt(localStorage.getItem("studentId")); // ← 学生ログイン時に保存してること前提
+  const [studentId, setStudentId] = useState(null); // ← stateに入れる！
 
   useEffect(() => {
-    if (!studentId) return;
+    const storedId = localStorage.getItem("studentId");
+    if (!storedId) return;
 
-    // ① メッセージ取得
+    const parsedId = parseInt(storedId);
+    setStudentId(parsedId);
+
+    // メッセージ取得
     fetch("http://localhost:3001/api/v1/messages")
       .then(res => res.json())
       .then(async (messages) => {
-        // ② 自分宛てのメッセージを絞り込み（receiver_id が自分）
         const myMessages = messages.filter(
-          (msg) => msg.receiver_id === studentId
+          (msg) => msg.receiver_id === parsedId
         );
 
-        // ③ 送信企業IDを取り出し（重複削除）
         const uniqueCompanyIds = [...new Set(myMessages.map(msg => msg.sender_id))];
 
-        // ④ 各企業の情報を取得
         const companyFetches = await Promise.all(
           uniqueCompanyIds.map((id) =>
             fetch(`http://localhost:3001/api/v1/companies/${id}`).then(res => res.json())
@@ -30,7 +31,7 @@ export default function MessageSenders() {
         setCompanyList(companyFetches);
       })
       .catch(err => console.error("エラー:", err));
-  }, [studentId]);
+  }, []);
 
   return (
     <div>
@@ -38,7 +39,6 @@ export default function MessageSenders() {
       <ul>
         {companyList.map((company) => (
           <li key={company.id}>
-            {/* 企業の詳細またはメッセージページへ遷移 */}
             <Link href={`/student/message/${company.id}_${studentId}`}>
               {company.name}
             </Link>
