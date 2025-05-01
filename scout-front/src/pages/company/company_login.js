@@ -32,7 +32,7 @@ export default function CompanyLogin() {
         localStorage.setItem("companyId", data.company_id)
         router.push('/company/listed_students'); // ログイン成功後に遷移するページ
       } else {
-        console.log('❌ ログイン失敗！IDまたはパスワードが違います');
+        alert('❌ ログイン失敗！IDまたはパスワードが違います');
       }
     } catch (error) {
       console.log('⚠️ 通信エラー:', error);
