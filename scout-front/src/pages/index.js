@@ -17,7 +17,8 @@ export default function Home() {
           <button className={styles.button}>学生用ログイン</button>
         </Link>
       </div>
-      
+      <br />
+      <img src="/scout_img1_byChatGPT.png" alt="サービスロゴ" className={styles.homeImage} />
     </div>
   );
 }

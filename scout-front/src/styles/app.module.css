@@ -86,6 +86,7 @@
   font-size: 1.1rem;                /* 少し大きめの文字 */
   color: #333;                      /* 読みやすい濃いグレー */
   margin-bottom: 2rem;             /* メッセージ下にスペース */
+  white-space: pre-wrap; /* 改行をそのまま表示 */
 }
 
 /* 「ログインページへ」のリンクをボタン風に見せるスタイル */
@@ -115,4 +116,17 @@
 .listItem {
   margin-bottom: 1rem;     /* 各項目の間にスペース */
   text-align: center;      /* テキストを中央に寄せる */
+}
+
+.rowLayout {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.homeImage {
+  width: 500px;        /* 画像の横幅を400pxに指定します */
+  height: auto;        /* 高さは自動で比率を保って調整されます（縦横比が崩れない） */
+  display: block;      /* ブロック要素として表示。中央寄せなどがしやすくなります */
+  margin: 0 auto;      /* 左右のマージンを「自動」にすることで中央寄せにします */
 }
