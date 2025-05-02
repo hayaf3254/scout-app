@@ -29,9 +29,17 @@ export default function CompaniesList() {
           </li>
         ))}
       </ul>
+
+      <div className={styles.rowLayout}>
       <Link href={`/student/student_account_delete`} className={styles.link}>
       <div>アカウント削除</div>
       </Link>
+
+      <Link href={`/student/student_appeal`} className={styles.link}>
+      <div>アピールポイントを書く</div>
+      </Link>
+      </div> 
+
     </div>
   );
 }
