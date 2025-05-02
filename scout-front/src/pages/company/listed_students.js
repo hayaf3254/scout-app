@@ -18,8 +18,9 @@ export default function StudnetsList() {
       <ul >
         {students.map((student) => (
           <li key={student.id} className={styles.message}>
-            
+            <Link href={`/company/student_appeal/${student.id}`} className={styles.link}>
               {student.name}
+              </Link>
               &nbsp;
               <Link href={`/company/message/${localStorage.getItem("companyId")}_${student.id}`}>
               <button className={styles.button}>メッセージを送る</button>
@@ -29,7 +30,7 @@ export default function StudnetsList() {
         ))}
       </ul>
       
-      <div className={styles.rowLayout}>
+      <footer className={styles.rowLayout}>
         <Link href="/company/company_account_delete" >
           <p className={styles.link}>アカウント削除</p>
         </Link>
@@ -37,7 +38,7 @@ export default function StudnetsList() {
         <Link href="/company/company_edit" >
           <p className={styles.link}>掲載内容編集</p>
         </Link>
-      </div>
+      </footer>
 
     </div>
   );

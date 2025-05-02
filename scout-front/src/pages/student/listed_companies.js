@@ -30,7 +30,7 @@ export default function CompaniesList() {
         ))}
       </ul>
 
-      <div className={styles.rowLayout}>
+      <footer className={styles.rowLayout}>
       <Link href={`/student/student_account_delete`} className={styles.link}>
       <div>アカウント削除</div>
       </Link>
@@ -38,7 +38,7 @@ export default function CompaniesList() {
       <Link href={`/student/student_appeal`} className={styles.link}>
       <div>アピールポイントを書く</div>
       </Link>
-      </div> 
+      </footer> 
 
     </div>
   );
