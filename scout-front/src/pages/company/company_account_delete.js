@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import styles from '@/styles/app.module.css';
 
 export default function DeleteAccountPage() {
   const [companyName, setCompanyName] = useState('');
@@ -34,9 +35,9 @@ export default function DeleteAccountPage() {
 
 };
 return(
-    <div>
-      <p>会社名：{companyName}</p>
-      <button onClick={handleDelete}>アカウントを削除</button>
+    <div className={styles.container}>
+      <p className={styles.message}>会社名：{companyName}</p>
+      <button onClick={handleDelete} className={styles.button}>アカウントを削除</button>
     </div>
   );
 

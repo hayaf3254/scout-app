@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import styles from '@/styles/app.module.css';
 
 export default function DeleteAccountPage() {
   const [studentName, setStudentName] = useState('');
@@ -32,9 +33,9 @@ export default function DeleteAccountPage() {
   };
 
   return (
-    <div>
-      <p>学生：{studentName}</p>
-      <button onClick={handleDelete}>アカウントを削除</button>
+    <div className={styles.container}>
+      <p className={styles.message}>学生：{studentName} </p>
+      <button onClick={handleDelete} className={styles.button}>アカウントを削除</button>
     </div>
   );
 }
