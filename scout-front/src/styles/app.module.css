@@ -123,3 +123,10 @@
   gap: 16px;
   align-items: center;
 }
+
+.homeImage {
+  width: 500px;        /* 画像の横幅を400pxに指定します */
+  height: auto;        /* 高さは自動で比率を保って調整されます（縦横比が崩れない） */
+  display: block;      /* ブロック要素として表示。中央寄せなどがしやすくなります */
+  margin: 0 auto;      /* 左右のマージンを「自動」にすることで中央寄せにします */
+}
