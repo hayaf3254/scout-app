@@ -25,7 +25,7 @@ export default function StudentAppeal() {
       <p className={styles.message}>アピールポイント</p>
       <p className={styles.message}>{student.appeal_point}</p>
       <br />
-      <Link href="/companies/listed_students">← インターン生一覧に戻る</Link>
+      <Link href="/company/listed_students">← インターン生一覧に戻る</Link>
     </div>
   );
 }

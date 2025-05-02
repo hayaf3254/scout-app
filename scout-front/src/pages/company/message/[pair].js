@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styles from "@/styles/app.module.css"; 
+import Link from "next/link";
 
 export default function MessagePage() {
   const router = useRouter();
@@ -80,6 +81,10 @@ export default function MessagePage() {
         <br />
         <button type="submit" className={styles.button}>送信</button>
       </form>
+      <br />
+      <div>
+      <Link href="/company/listed_students" className={styles.link}>← インターン生一覧に戻る</Link>
+      </div>
     </div>
   );
 }
