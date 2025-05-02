@@ -116,3 +116,9 @@
   margin-bottom: 1rem;     /* 各項目の間にスペース */
   text-align: center;      /* テキストを中央に寄せる */
 }
+
+.rowLayout {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
