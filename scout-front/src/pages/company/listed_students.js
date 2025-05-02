@@ -28,6 +28,11 @@ export default function StudnetsList() {
           </li>
         ))}
       </ul>
+
+      <Link href="/company/company_account_delete" className={styles.link}>
+              <p >アカウント削除</p>
+            </Link>
+
     </div>
   );
 }
