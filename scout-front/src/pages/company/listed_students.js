@@ -10,7 +10,7 @@ export default function StudentsList() { //コンポーネント定義
       .then((res) => res.json()) //返事（レスポンス）をJSON形式に変換する
       .then((data) => setStudents(data)) //取得したデータをsetで更新し,studentsに書く脳
       .catch((err) => console.error("API error:", err)); //エラーがあった場合はキャッチしてコンソールにエラーを表示する
-  }, []);
+  }, []); //この処理は、最初の1回だけ実行されるという意味
 
   return (
     <div className={styles.container}>
