@@ -8,28 +8,32 @@ export default function DeleteAccountPage() {
 
   useEffect(() => {
     const id = localStorage.getItem('studentId');
-    if (!id) return;
-    setStudentId(id);
+    if (!id) return; //id（ログイン情報）が存在しない場合、データ取得処理をスキップする
+    setStudentId(id); //localStorageの値はReact内で使いやすいようにstateにコピーする,あとで削除リクエストに使う。
 
     // 名前取得（GET /students/:id を叩く例）
     fetch(`http://localhost:3001/api/v1/students/${id}`)
-      .then(res => res.json())
+      .then(res => res.json()) //thenは「処理が終わったら、次にこれやってね」っていう命令
       .then(data => {
         setStudentName(data.name);
+      })
+      .catch(err => {
+        console.error("データ取得エラー:", err);
+        alert("学生情報の取得に失敗しました");
       });
   }, []);
 
-  const handleDelete = async () => {
-    const ok = window.confirm('復元できません。本当に削除しますか？');
-    if (!ok) return;
+  const handleDelete = async () => { //await使ってるのでasyncが必要
+    const ok = window.confirm('復元できません。本当に削除しますか？'); //確認のダイアログを出す（OK → true / キャンセル → false）
+    if (!ok) return; //キャンセルされたら何もしない
 
     await fetch(`http://localhost:3001/api/v1/students/${studentId}`, {
-      method: 'DELETE',
+      method: 'DELETE', //DELETE メソッドでサーバーにデータを削除するリクエストを送る,constでsetされたstudentIDを削除
     });
 
-    localStorage.removeItem('studentId');
+    localStorage.removeItem('studentId'); //ローカルに保存したIDつまり、ログイン情報を削除
     alert('アカウントを削除しました');
-    window.location.href = '/'; // ホームにリダイレクト
+    window.location.href = '/'; // ホームに強制的にリダイレクト,再ログインを確実に消すなどで使われる
   };
 
   return (

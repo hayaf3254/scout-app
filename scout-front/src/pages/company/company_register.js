@@ -60,7 +60,7 @@ export default function CompanyRegister() {
           <p>企業用のアカウント、掲載内容を作成します。</p>
       
           <form onSubmit={handleSubmit} className={styles.formWrapper}>
-  <input name="name" placeholder="名前" onChange={handleChange} className={styles.input} />
+  <input name="name" placeholder="会社名" onChange={handleChange} className={styles.input} />
   <input name="user_id" placeholder="ID" onChange={handleChange} className={styles.input} />
   <input type="password" name="password" placeholder="パスワード" onChange={handleChange} className={styles.input} />
   <input type="password" name="confirmPassword" placeholder="確認パスワード" onChange={handleChange} className={styles.input} />

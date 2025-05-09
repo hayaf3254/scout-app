@@ -1,5 +1,5 @@
 class Api::V1::MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :update, :destroy]
+  before_action :set_message, only: [:show, :update, :destroy] #show, update, destroy を実行する前に、set_message メソッドを呼び出しておけ！→@message = Message.find(params[:id])は指定場所には書かなくてよい
 
   # GET /api/v1/messages
   def index
