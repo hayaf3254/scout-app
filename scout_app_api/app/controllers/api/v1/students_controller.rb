@@ -1,8 +1,8 @@
 class Api::V1::StudentsController < ApplicationController
 
   def login
-    student = Student.find_by(user_id: params[:user_id])
-    if student && student.password == params[:password]
+    student = Student.find_by(user_id: params[:user_id]) #params[:user_id] で送られてきたログインIDと一致するIDを探している
+    if student && student.password == params[:password] #本当はif (student != nil) && (student.password == params[:password])って意味
       render json: { success: true, student_id: student.id }
     else
       render json: { success: false }, status: :unauthorized
@@ -11,18 +11,18 @@ class Api::V1::StudentsController < ApplicationController
   
 
   def index
-    @students = Student.all
-    render json:@students
+    @students = Student.all  #Studentsモデルを全部取得(SELECT * FROM students)
+    render json:@students #json形式でフロントに返す
   end
 
   def show
-    @student = Student.find(params[:id])
-    render json:@student
+    @student = Student.find(params[:id]) #params[:id]で送られてきたIDを持つ生徒を探している
+    render json:@student 
   end
 
   def create
-    @student = Student.new(student_params)
-        if @student.save
+    @student = Student.new(student_params) #.newは新しいインスタンス（データの元）を作る
+        if @student.save #.saveはDBに保存するメソッド
             render json:@student, status: :created
         else
           render json:@student.errors,status: :unprocessable_entity
@@ -40,12 +40,12 @@ class Api::V1::StudentsController < ApplicationController
 
   def destroy
     @student = Student.find(params[:id])
-    @student.destroy
+    @student.destroy #受け取ったIDの生徒を探して、destroyメソッドでDBから削除
     head :no_content
   end
 
   private
   def student_params
-    params.require(:student).permit(:user_id, :password, :name , :appeal_point)
+    params.require(:student).permit(:user_id, :password, :name , :appeal_point) #permit→許可するカラムを指定するメソッド
   end
 end
