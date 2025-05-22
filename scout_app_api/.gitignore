@@ -22,7 +22,8 @@
 !/tmp/pids/.keep
 
 # Ignore storage (uploaded files in development and any SQLite databases).
-#/storage/*
+/storage/*
+!/storage/development.sqlite3
 !/storage/.keep
 /tmp/storage/*
 !/tmp/storage/
