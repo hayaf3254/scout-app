@@ -13,7 +13,7 @@ export default function CompanyLogin() {
     console.log('企業ログインPassword:', password);
  
     try {
-      const res = await fetch('${process.env.NEXT_PUBLIC_API_URL}/api/v1/companies/login', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/companies/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

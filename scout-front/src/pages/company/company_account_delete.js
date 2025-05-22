@@ -27,7 +27,7 @@ export default function DeleteAccountPage() {
         method: 'DELETE',
         
     });
-    localStorage.removeItem('studentId');
+    localStorage.removeItem('companyId');
     alert('アカウントを削除しました');
     window.location.href = '/'; // ホームにリダイレクト
 

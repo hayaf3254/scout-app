@@ -13,7 +13,7 @@ export default function StudentLogin() {
     console.log('学生ログインPassword:', password);
 
     try {
-      const res = await fetch('${process.env.NEXT_PUBLIC_API_URL}/api/v1/students/login', { // 学生データをAPIに送信（ログイン）
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/students/login`, { // 学生データをAPIに送信（ログイン）
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', //// Content-Type: サーバーに「これはJSON形式ですよ」と伝えるための設定

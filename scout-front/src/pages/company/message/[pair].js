@@ -29,7 +29,7 @@ export default function MessagePage() {
       .then(data => setStudent(data));
 
     // メッセージ一覧取得
-    fetch("${process.env.NEXT_PUBLIC_API_URL}/api/v1/messages")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/messages`)
       .then(res => res.json())
       .then(data => {
         const filtered = data.filter(m =>
@@ -42,7 +42,7 @@ export default function MessagePage() {
   // メッセージ送信
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch("${process.env.NEXT_PUBLIC_API_URL}/api/v1/messages", {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/messages`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

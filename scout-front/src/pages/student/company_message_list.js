@@ -14,7 +14,7 @@ export default function MessageSenders() {
     setStudentId(parsedId);
 
     // メッセージ取得
-    fetch("${process.env.NEXT_PUBLIC_API_URL}/api/v1/messages")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/messages`)
       .then(res => res.json())
       .then(async (messages) => { //messages はメッセージテーブルの全データが配列で入っている
         const myMessages = messages.filter( //filterは条件に合うやつものだけ残す関数
