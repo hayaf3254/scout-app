@@ -1,13 +1,14 @@
 class Api::V1::CompaniesController < ApplicationController
 #リクエストで送られてきたデータを受け取るためのハコ（ハッシュみたいなもの）
-  def login
-    company = Company.find_by(user_id: params[:user_id]) #params[:user_id] で送られてきたログインID
-    if company && company.password == params[:password]
-      render json: { success: true, company_id: company.id } #見つかったらsuccess: true
-    else
-      render json: { success: false }, status: :unauthorized #見つからなかったらsuccess:false,401 Unauthorized エラーを返す
-    end
+def login
+  student = Student.find_by(user_id: params[:user_id])
+  if student&.authenticate(params[:password])
+    render json: { success: true, student_id: student.id }
+  else
+    render json: { success: false }, status: :unauthorized
   end
+end
+
 
 
   def index
