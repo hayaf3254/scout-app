@@ -1,9 +1,9 @@
 class Api::V1::CompaniesController < ApplicationController
 #リクエストで送られてきたデータを受け取るためのハコ（ハッシュみたいなもの）
 def login
-  student = Student.find_by(user_id: params[:user_id])
-  if student&.authenticate(params[:password])
-    render json: { success: true, student_id: student.id }
+  company = Company.find_by(user_id: params[:user_id])
+  if company&.authenticate(params[:password])
+    render json: { success: true, company_id: company.id }
   else
     render json: { success: false }, status: :unauthorized
   end
@@ -48,7 +48,7 @@ end
   private
 
   def company_params
-    params.require(:company).permit(:user_id, :password, :name, :publish) #permit→許可するカラムを指定するメソッド
+    params.permit(:user_id, :password, :name, :publish) #permit→許可するカラムを指定するメソッド
     # params.require(:company) → :companyキーの中身を取得（存在しなければエラー）
     # .permit(...) → 受け取ってもOKなキー（カラム）だけ許可
   end
