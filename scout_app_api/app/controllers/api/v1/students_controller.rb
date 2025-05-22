@@ -1,14 +1,14 @@
 class Api::V1::StudentsController < ApplicationController
 
-  def login
-    student = Student.find_by(user_id: params[:user_id]) #params[:user_id] で送られてきたログインIDと一致するIDを探している
-    if student && student.password == params[:password] #本当はif (student != nil) && (student.password == params[:password])って意味
-      render json: { success: true, student_id: student.id }
-    else
-      render json: { success: false }, status: :unauthorized
-    end
+def login
+  student = Student.find_by(user_id: params[:user_id])
+  if student&.authenticate(params[:password])
+    render json: { success: true, student_id: student.id }
+  else
+    render json: { success: false }, status: :unauthorized
   end
-  
+end
+
 
   def index
     @students = Student.all  #Studentsモデルを全部取得(SELECT * FROM students)
@@ -46,6 +46,7 @@ class Api::V1::StudentsController < ApplicationController
 
   private
   def student_params
-    params.require(:student).permit(:user_id, :password, :name , :appeal_point) #permit→許可するカラムを指定するメソッド
+    params.permit(:user_id, :password, :name, :appeal_point)
   end
+
 end
