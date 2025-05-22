@@ -14,7 +14,7 @@ export default function MessageSenders() {
     setStudentId(parsedId);
 
     // メッセージ取得
-    fetch("http://localhost:3001/api/v1/messages")
+    fetch("${process.env.NEXT_PUBLIC_API_URL}/api/v1/messages")
       .then(res => res.json())
       .then(async (messages) => { //messages はメッセージテーブルの全データが配列で入っている
         const myMessages = messages.filter( //filterは条件に合うやつものだけ残す関数
@@ -25,7 +25,7 @@ export default function MessageSenders() {
 
         const companyFetches = await Promise.all( //「複数のfetchを同時に一気に実行して、全部終わるまで待つ関数
           uniqueCompanyIds.map((id) => //mapでIDごとにfetchを実行
-            fetch(`http://localhost:3001/api/v1/companies/${id}`).then(res => res.json()) //fetch(...) → 該当するcompaniesのID(複数)にアクセスして、企業情報を取得
+            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/companies/${id}`).then(res => res.json()) //fetch(...) → 該当するcompaniesのID(複数)にアクセスして、企業情報を取得
           )
         );
 

@@ -18,17 +18,17 @@ export default function MessagePage() {
     if (!companyId || !studentId) return; //companyIdとstudentIdがどっちも必要で、なかった時は何もしない
 
     // 企業データ取得
-    fetch(`http://localhost:3001/api/v1/companies/${companyId}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/companies/${companyId}`)
       .then(res => res.json())
       .then(data => setCompany(data));
 
     // 学生データ取得
-    fetch(`http://localhost:3001/api/v1/students/${studentId}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/students/${studentId}`)
       .then(res => res.json())
       .then(data => setStudent(data));
 
     // メッセージ一覧取得
-    fetch("http://localhost:3001/api/v1/messages")
+    fetch("${process.env.NEXT_PUBLIC_API_URL}/api/v1/messages")
       .then(res => res.json())
       .then(data => {
         const filtered = data.filter(m =>

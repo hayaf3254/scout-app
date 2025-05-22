@@ -19,17 +19,17 @@ export default function MessagePage() {
     if (!companyId || !studentId) return;
 
     // 企業データ取得
-    fetch(`http://localhost:3001/api/v1/companies/${companyId}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/companies/${companyId}`)
       .then(res => res.json())
       .then(data => setCompany(data));
 
     // 学生データ取得
-    fetch(`http://localhost:3001/api/v1/students/${studentId}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/students/${studentId}`)
       .then(res => res.json())
       .then(data => setStudent(data));
 
     // メッセージ一覧取得
-    fetch("http://localhost:3001/api/v1/messages")
+    fetch("${process.env.NEXT_PUBLIC_API_URL}/api/v1/messages")
       .then(res => res.json())
       .then(data => {
         const filtered = data.filter(m =>
@@ -42,7 +42,7 @@ export default function MessagePage() {
   // メッセージ送信
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:3001/api/v1/messages", {
+    await fetch("${process.env.NEXT_PUBLIC_API_URL}/api/v1/messages", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -12,7 +12,7 @@ export default function DeleteAccountPage() {
     setStudentId(id); //localStorageの値はReact内で使いやすいようにstateにコピーする,あとで削除リクエストに使う。
 
     // 名前取得（GET /students/:id を叩く例）
-    fetch(`http://localhost:3001/api/v1/students/${id}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/students/${id}`)
       .then(res => res.json()) //thenは「処理が終わったら、次にこれやってね」っていう命令
       .then(data => {
         setStudentName(data.name);
@@ -27,7 +27,7 @@ export default function DeleteAccountPage() {
     const ok = window.confirm('復元できません。本当に削除しますか？'); //確認のダイアログを出す（OK → true / キャンセル → false）
     if (!ok) return; //キャンセルされたら何もしない
 
-    await fetch(`http://localhost:3001/api/v1/students/${studentId}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/students/${studentId}`, {
       method: 'DELETE', //DELETE メソッドでサーバーにデータを削除するリクエストを送る,constでsetされたstudentIDを削除
     });
 

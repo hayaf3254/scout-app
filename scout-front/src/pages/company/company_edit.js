@@ -13,7 +13,7 @@ export default function EditCompanyPage() {
     if (!id) return;
     setCompanyId(id);
 
-    fetch(`http://localhost:3001/api/v1/companies/${id}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/companies/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setCompany({ name: data.name, publish: data.publish });
@@ -25,7 +25,7 @@ export default function EditCompanyPage() {
   };
 
   const handleSubmit = async () => {
-    await fetch(`http://localhost:3001/api/v1/companies/${companyId}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/companies/${companyId}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ company }),

@@ -12,7 +12,7 @@ export default function DeleteAccountPage() {
     setCompanyId(id);
 
     
-    fetch(`http://localhost:3001/api/v1/companies/${id}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/companies/${id}`)
       .then(res => res.json())
       .then(data => {
         setCompanyName(data.name);
@@ -23,7 +23,7 @@ export default function DeleteAccountPage() {
         const ok = window.confirm('復元できません。本当に削除しますか？');
         if (!ok) return;
 
-        await fetch(`http://localhost:3001/api/v1/companies/${companyId}`, {
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/companies/${companyId}`, {
         method: 'DELETE',
         
     });

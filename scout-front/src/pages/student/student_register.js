@@ -26,7 +26,7 @@ export default function Register() {
     }
 
     try {
-      const res = await fetch("http://localhost:3001/api/v1/students", { // 学生データをAPIに送信（新規登録）
+      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/api/v1/students", { // 学生データをAPIに送信（新規登録）
         method: "POST", //POSTでデータを送信
         headers: { "Content-Type": "application/json" }, //サーバーに送るデータの形式を教えるため
         //"Content-Type"（コンテントタイプ）＝データの種類,"application/json"＝「これはJSON形式ですよ」って意味

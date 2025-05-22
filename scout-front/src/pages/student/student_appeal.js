@@ -13,7 +13,7 @@ export default function EditStudentPage() {
     if (!id) return; //id（ログイン情報）が存在しない場合、データ取得処理をスキップする
     setStudentId(id); //localStorageの値はReact内で使いやすいようにstateにコピーする
 
-    fetch(`http://localhost:3001/api/v1/students/${id}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/students/${id}`)
       .then((res) => res.json()) //json形式に変換
       .then((data) => {
         setStudent({ name: data.name, //setStudentで取得した値を更新
@@ -26,7 +26,7 @@ export default function EditStudentPage() {
   };
 
   const handleSubmit = async () => {
-    await fetch(`http://localhost:3001/api/v1/students/${studentId}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/students/${studentId}`, {
       method: 'PATCH', //PATCH メソッドでサーバーに部分的にデータを送る
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ student }),

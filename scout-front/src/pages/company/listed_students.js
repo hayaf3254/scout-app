@@ -6,7 +6,7 @@ export default function StudentsList() { //コンポーネント定義
   const [students, setStudents] = useState([]); //左が学生のリストが入る変数、右がそれを更新するときに使う関数
 
   useEffect(() => { //useEffectはページが表示されたときに何かしたい時に使う
-    fetch("http://localhost:3001/api/v1/students") //APIから学生のリストを取得する
+    fetch("${process.env.NEXT_PUBLIC_API_URL}/api/v1/students") //APIから学生のリストを取得する
       .then((res) => res.json()) //返事（レスポンス）をJSON形式に変換する
       .then((data) => setStudents(data)) //取得したデータをsetで更新し,studentsに書く脳
       .catch((err) => console.error("API error:", err)); //エラーがあった場合はキャッチしてコンソールにエラーを表示する
