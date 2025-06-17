@@ -1,6 +1,8 @@
 # scout-app
 # インターンマッチングスカウトサービス（プロトタイプ）課題
 
+[notion紹介ページ]　https://adventurous-allspice-cc5.notion.site/Scout-App-21541dc1c9dd80a29d88d5d0b1e75456?source=copy_link
+
 ## 概要
 学生と企業をつなぐ、スカウト型のインターンマッチングサービスです。  
 企業は掲載情報の作成・編集、学生のアピールポイントの閲覧やメッセージ送信が可能です。  
